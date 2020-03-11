@@ -16,33 +16,28 @@
 
         <?php
         function countDown($n) {
-            for ($i = $n; $i > 0; $i--)
+            for ($i=$n; $i>0; $i--)
             echo "$i <br>";
         }
 
         if (isset($_GET["text"])) {
-            try {
-                if (is_numeric($_GET["text"]) && $_GET["text"] > 0 && $_GET["text"] < 10) {
-                    countDown($_GET["text"]);
-                }
-                else if (!is_numeric($_GET["text"])) {
-                    throw new Exception('is geen getal');
-                }
-                elseif ($_GET["text"] <= 0) {
-                    throw new Exception('kan niet lager tellen');
-                }
-                elseif ($_GET["text"] > 10) {
-                    throw new Exception('getal is te groot');
-                }  
-                else {
-                    throw new Exception('er is iets mis gegaan');
-                }      
-            } 
-            catch (exception $ex) {
-                echo "ERROR: ". $ex -> getMessage();
+            if (is_numeric($_GET["text"]) && $_GET["text"] > 0 && $_GET["text"] < 10) {
+                countDown($_GET["text"]);
             }
-        }
-
+            else if (!is_numeric($_GET["text"])) {
+                error_log('is geen getal'.PHP_EOL, 3, "errors.log");
+            }
+            elseif ($_GET["text"] <= 0) {
+                error_log('kan niet lager tellen'.PHP_EOL, 3, "errors.log");
+            }
+            elseif ($_GET["text"] > 10) {
+                error_log('getal is te groot'.PHP_EOL, 3, "errors.log");
+            }  
+            else {
+                error_log('er is iets mis gegaan'.PHP_EOL, 3, "errors.log");
+            }      
+        } 
+        
         ?>
 
     </body>
