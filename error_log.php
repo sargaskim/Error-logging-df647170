@@ -16,9 +16,11 @@
 
         <?php
         function countDown($n) {
-            for ($i=$n; $i>0; $i--)
-            echo "$i <br>";
+            for ($x = $n; $x > 0; $x--) {
+                echo "$x <br>";
+            }
         }
+
 
         if (isset($_GET["text"])) {
             if (is_numeric($_GET["text"]) && $_GET["text"] > 0 && $_GET["text"] < 10) {
@@ -37,8 +39,6 @@
                 error_log('er is iets mis gegaan'.PHP_EOL, 3, "errors.log");
             }      
         } 
-        
         ?>
-
     </body>
 </html>
